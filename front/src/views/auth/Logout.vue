@@ -1,13 +1,9 @@
-<template>
-    
-</template>
-
+<template></template>
 <script>
     export default {
-        name: "Logout"
+        name: 'Logout',
+        created() {
+            this.$store.dispatch('logout')
+        }
     }
 </script>
-
-<style scoped>
-
-</style>
