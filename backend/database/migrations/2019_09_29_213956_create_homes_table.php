@@ -15,7 +15,12 @@ class CreateHomesTable extends Migration
     {
         Schema::create('homes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('title');
+            $table->text('note');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->timestamps();
+            $table->integer('status')->unsigned()->default(1);
         });
     }
 
