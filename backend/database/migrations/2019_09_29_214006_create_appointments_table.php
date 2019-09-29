@@ -20,7 +20,7 @@ class CreateAppointmentsTable extends Migration
             $table->integer('home_id')->unsigned()->default(0);
             $table->string('title');
             $table->text('note');
-            $table->integer('start')->unsigned();
+            $table->integer('start');
             $table->timestamps();
             $table->integer('status')->unsigned()->default(1);
         });
