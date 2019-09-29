@@ -20,6 +20,7 @@ class CreateOfficesTable extends Migration
             $table->string('latitude');
             $table->string('longitude');
             $table->timestamps();
+            $table->integer('status')->default(1);
         });
     }
 
