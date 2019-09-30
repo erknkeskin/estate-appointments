@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HomeRequest;
 use App\Http\Resources\Home\HomeResource;
 use App\Model\Home;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except('index', 'show'); // es geç
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -34,9 +42,18 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HomeRequest $request)
     {
-        //
+        $home = new Home;
+        $home->title = $request->title;
+        $home->note = $request->note;
+        $home->latitude = $request->latitude;
+        $home->longitude = $request->longitude;
+        $home->save();
+
+        return response([
+            'data' => new HomeResource($home)
+        ], Response::HTTP_CREATED);
     }
 
     /**
@@ -70,7 +87,11 @@ class HomeController extends Controller
      */
     public function update(Request $request, Home $home)
     {
-        //
+        $home->update($request->all());
+
+        return response([
+            'data' => new HomeResource($home)
+        ], Response::HTTP_CREATED);
     }
 
     /**
@@ -81,6 +102,8 @@ class HomeController extends Controller
      */
     public function destroy(Home $home)
     {
-        //
+        $home->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }
