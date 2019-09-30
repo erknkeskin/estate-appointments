@@ -13,7 +13,7 @@ class HomeController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api')->except('index', 'show'); // es geç
+        $this->middleware('auth:api');
     }
 
     /**
@@ -103,7 +103,6 @@ class HomeController extends Controller
     public function destroy(Home $home)
     {
         $home->delete();
-
         return response(null, Response::HTTP_NO_CONTENT);
     }
 }
