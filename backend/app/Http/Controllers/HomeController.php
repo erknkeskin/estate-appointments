@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Home\HomeResource;
 use App\Model\Home;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
+        return Home::all();
     }
 
     /**
@@ -46,7 +47,7 @@ class HomeController extends Controller
      */
     public function show(Home $home)
     {
-        //
+        return new HomeResource($home);
     }
 
     /**
