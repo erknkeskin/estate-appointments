@@ -18,7 +18,8 @@ class HomeResource extends JsonResource
             'title' => $this->title,
             'note' => $this->note,
             'latitude' => $this->latitude,
-            'longitude' => $this->longitude
+            'longitude' => $this->longitude,
+            'status' => $this->status
         ];
     }
 }
