@@ -31,3 +31,6 @@ Route::group([
 });
 
 Route::apiResource('/homes', 'HomeController');
+Route::apiResource('/offices', 'OfficeController');
+Route::apiResource('/appointments', 'AppointmentController');
+Route::apiResource('/customers', 'CustomerController');

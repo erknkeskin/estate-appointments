@@ -48,7 +48,6 @@ class OfficeController extends Controller
         $office->address = $request->address;
         $office->latitude = $request->latitude;
         $office->longitude = $request->longitude;
-        $office->status = $request->status;
         $office->save();
 
         return response()->json([
@@ -90,7 +89,7 @@ class OfficeController extends Controller
         $office->update($request->all());
 
         return response([
-            'data' => new HomeResource($office)
+            'data' => new OfficeResource($office)
         ], Response::HTTP_CREATED);
     }
 
