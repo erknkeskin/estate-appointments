@@ -16,10 +16,10 @@ class ComposerStaticInitcad561997ddc91e422bdd202a8c766d7
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
-        'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
-        '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
+        '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'b6ec61354e97f32c0ae683041c78392a' => __DIR__ . '/..' . '/scrivo/highlight.php/HighlightUtilities/functions.php',
@@ -138,8 +138,13 @@ class ComposerStaticInitcad561997ddc91e422bdd202a8c766d7
             'Cron\\' => 5,
             'Carbon\\' => 7,
         ),
+        'B' => 
+        array (
+            'Barryvdh\\Cors\\' => 14,
+        ),
         'A' => 
         array (
+            'Asm89\\Stack\\' => 12,
             'App\\' => 4,
         ),
     );
@@ -387,6 +392,14 @@ class ComposerStaticInitcad561997ddc91e422bdd202a8c766d7
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
+        'Barryvdh\\Cors\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/barryvdh/laravel-cors/src',
+        ),
+        'Asm89\\Stack\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -429,6 +442,7 @@ class ComposerStaticInitcad561997ddc91e422bdd202a8c766d7
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AppointmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/AppointmentController.php',
+        'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -446,9 +460,18 @@ class ComposerStaticInitcad561997ddc91e422bdd202a8c766d7
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\AppointmentRequest' => __DIR__ . '/../..' . '/app/Http/Requests/AppointmentRequest.php',
+        'App\\Http\\Requests\\CustomerRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CustomerRequest.php',
         'App\\Http\\Requests\\HomeRequest' => __DIR__ . '/../..' . '/app/Http/Requests/HomeRequest.php',
+        'App\\Http\\Requests\\OfficeRequest' => __DIR__ . '/../..' . '/app/Http/Requests/OfficeRequest.php',
+        'App\\Http\\Resources\\Appointment\\AppointmentCollection' => __DIR__ . '/../..' . '/app/Http/Resources/Appointment/AppointmentCollection.php',
+        'App\\Http\\Resources\\Appointment\\AppointmentResource' => __DIR__ . '/../..' . '/app/Http/Resources/Appointment/AppointmentResource.php',
+        'App\\Http\\Resources\\Customer\\CustomerCollection' => __DIR__ . '/../..' . '/app/Http/Resources/Customer/CustomerCollection.php',
+        'App\\Http\\Resources\\Customer\\CustomerResource' => __DIR__ . '/../..' . '/app/Http/Resources/Customer/CustomerResource.php',
         'App\\Http\\Resources\\Home\\HomeCollection' => __DIR__ . '/../..' . '/app/Http/Resources/Home/HomeCollection.php',
         'App\\Http\\Resources\\Home\\HomeResource' => __DIR__ . '/../..' . '/app/Http/Resources/Home/HomeResource.php',
+        'App\\Http\\Resources\\Office\\OfficeCollection' => __DIR__ . '/../..' . '/app/Http/Resources/Office/OfficeCollection.php',
+        'App\\Http\\Resources\\Office\\OfficeResource' => __DIR__ . '/../..' . '/app/Http/Resources/Office/OfficeResource.php',
         'App\\Model\\Appointment' => __DIR__ . '/../..' . '/app/Model/Appointment.php',
         'App\\Model\\Customer' => __DIR__ . '/../..' . '/app/Model/Customer.php',
         'App\\Model\\Home' => __DIR__ . '/../..' . '/app/Model/Home.php',
@@ -459,6 +482,12 @@ class ComposerStaticInitcad561997ddc91e422bdd202a8c766d7
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
+        'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/CorsService.php',
+        'Barryvdh\\Cors\\HandleCors' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/HandleCors.php',
+        'Barryvdh\\Cors\\HandlePreflight' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/HandlePreflight.php',
+        'Barryvdh\\Cors\\LumenServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/LumenServiceProvider.php',
+        'Barryvdh\\Cors\\ServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/ServiceProvider.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonImmutable' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',
         'Carbon\\CarbonInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterface.php',

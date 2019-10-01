@@ -30,7 +30,7 @@ export default new Vuex.Store({
             }
         },
         logout({commit}) {
-            return axios.post('/logout', {token: localStorage.getItem('token')})
+            return axios.post('/auth/logout', {token: localStorage.getItem('token')})
                 .then((response) => {
                     commit('clearToken')
                     localStorage.removeItem('token')
@@ -43,7 +43,7 @@ export default new Vuex.Store({
             }, expireTime)
         },
         login({commit}, authData) {
-            return axios.post('/login', {email: authData.email, password: authData.password})
+            return axios.post('/auth/login', {email: authData.email, password: authData.password})
                 .then((response) => {
                     commit('setToken', response.data.access_token)
                     localStorage.setItem('token', response.data.access_token)
