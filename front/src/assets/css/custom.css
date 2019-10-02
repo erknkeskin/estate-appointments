@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,500,700&display=swap');
+
 body {
     overflow-x: hidden;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.container-content {
+    position: relative;
+    margin-left: 270px;
+    margin-top: 20px;
+    width: calc(100% - 290px);
+    background-color: #ffffff;
+    padding: 20px;
 }

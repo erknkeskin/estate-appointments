@@ -1,13 +1,10 @@
 <template>
-    <div class="content">
-        <left class="mr-2"/>
-        <main>
-            <top/>
-            <div class="wrapper">
-                dashboard
-            </div>
-        </main>
-
+    <div>
+        <top/>
+        <left/>
+        <div class="container-content">
+            dashboard
+        </div>
     </div>
 </template>
 <script>
@@ -19,17 +16,6 @@
         components: {
             Left,
             Top
-        },
-        mounted() {
-            if (!this.$store.getters.isAuth) {
-                this.$router.replace('/login')
-            }
         }
     };
 </script>
-
-<style scoped>
-    .top {
-        background-color: #282828;
-    }
-</style>

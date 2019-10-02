@@ -1,58 +1,69 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import axios from 'axios'
-import router from "./router";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import axios from 'axios';
+import logo from './assets/images/logo.png';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        token: null,
         appData: {
-            name: 'ICEBERG'
-        }
+            name: 'ICEBERG',
+            logo: logo
+        },
+        status: '',
+        token: localStorage.getItem('token') || '',
+        user: {}
     },
     mutations: {
-        setToken(state, token) {
-            state.token = token
+        auth_request(state) {
+            state.status = 'loading'
         },
-        clearToken(state) {
-            state.token = null
+        auth_success(state, token, user) {
+            state.status = 'success'
+            state.token = token
+            state.user = user
+        },
+        auth_error(state) {
+            state.status = 'error'
+        },
+        logout(state) {
+            state.status = ''
+            state.token = ''
         }
     },
     actions: {
-        initAuth() {
-            let token = localStorage.getItem('token')
-            if (token) {
-                this.$store.commit('setToken', token)
-            } else {
-                this.$router.push('/login')
-            }
+        login({commit}, user) {
+            return new Promise((resolve, reject) => {
+                commit('auth_request');
+                axios({url: '/auth/login', data: {email: user.email, password: user.password}, method: 'POST'})
+                    .then(resp => {
+                        const token = resp.data.access_token;
+                        const user = resp.data.user;
+
+                        localStorage.setItem('token', token);
+                        axios.defaults.headers.common['Authorization'] = 'Bearer '+token;
+                        commit('auth_success', token, user);
+                        resolve(resp);
+                    })
+                    .catch(err => {
+                        commit('auth_error');
+                        localStorage.removeItem('token');
+                        reject(err);
+                    })
+            })
         },
         logout({commit}) {
-            return axios.post('/auth/logout', {token: localStorage.getItem('token')})
-                .then((response) => {
-                    commit('clearToken')
-                    localStorage.removeItem('token')
-                    router.replace('/')
-                })
-        },
-        expired({dispatch}, expireTime) {
-            setTimeout(() => {
-                dispatch('logout')
-            }, expireTime)
-        },
-        login({commit}, authData) {
-            return axios.post('/auth/login', {email: authData.email, password: authData.password})
-                .then((response) => {
-                    commit('setToken', response.data.access_token)
-                    localStorage.setItem('token', response.data.access_token)
-                })
+            return new Promise((resolve, reject) => {
+                commit('logout');
+                localStorage.removeItem('token')
+                delete axios.defaults.headers.common['Authorization']
+                resolve()
+            })
         }
     },
     getters: {
-        isAuth(state) {
-            return state.token === null ? false : true // token geçerliliğini de backend tarafında kontrol et
-        }
+        isLoggedIn: state => !!state.token,
+        authStatus: state => state.status,
     }
 });

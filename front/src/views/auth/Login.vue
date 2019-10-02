@@ -5,13 +5,13 @@
         </div>
 
         <div class="form-label-group">
-            <input type="email" autocomplete="off" id="email" v-model="user.email" class="form-control"
+            <input type="email" autocomplete="off" id="email" v-model="email" class="form-control"
                    placeholder="e-posta" required autofocus>
             <label for="email">Email address</label>
         </div>
 
         <div class="form-label-group">
-            <input type="password" id="password" autocomplete="off" v-model="user.password" class="form-control"
+            <input type="password" id="password" autocomplete="off" v-model="password" class="form-control"
                    placeholder="şifre" required>
             <label for="password">Password</label>
         </div>
@@ -25,23 +25,17 @@
         name: 'Login',
         data() {
             return {
-                user: {
-                    email: null,
-                    password: null
-                }
-            }
-        },
-        mounted(){
-            if ( this.$store.getters.isAuth ) {
-                this.$router.replace('/dashboards')
+                email: '',
+                password: ''
             }
         },
         methods: {
             login() {
-                this.$store.dispatch('login', {email: this.user.email, password: this.user.password})
-                    .then(response => {
-                        this.$router.push('/')
-                    })
+                let email = this.email;
+                let password = this.password;
+                this.$store.dispatch('login', {email, password})
+                    .then(() => this.$router.push('/'))
+                    .catch(err => console.log(err))
             }
         }
     }

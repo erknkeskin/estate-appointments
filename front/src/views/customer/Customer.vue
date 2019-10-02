@@ -3,7 +3,7 @@
         <top />
         <left />
         <div class="container-content">
-            ofisler
+            müşteriler
         </div>
     </div>
 </template>
@@ -12,7 +12,7 @@
     import Top from "../../components/layout/Top";
 
     export default {
-        name: 'Office',
+        name: 'Customer',
         components: {
             Left,
             Top

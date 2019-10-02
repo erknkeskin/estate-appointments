@@ -1,13 +1,10 @@
 <template>
-    <div class="content">
-        <left class="mr-2"/>
-        <main>
-            <top/>
-            <div class="wrapper">
-                evler
-            </div>
-        </main>
-
+    <div>
+        <top />
+        <left />
+        <div class="container-content">
+            evler
+        </div>
     </div>
 </template>
 <script>
@@ -15,21 +12,10 @@
     import Top from "../../components/layout/Top";
 
     export default {
-        name: 'Homes',
+        name: 'Home',
         components: {
             Left,
             Top
-        },
-        mounted() {
-            if (!this.$store.getters.isAuth) {
-                this.$router.replace('/login')
-            }
         }
     };
 </script>
-
-<style scoped>
-    .top {
-        background-color: #282828;
-    }
-</style>

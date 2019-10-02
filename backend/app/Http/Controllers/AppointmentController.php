@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\Appointment\AppointmentResource;
 use App\Model\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
 class AppointmentController extends Controller
@@ -21,7 +22,14 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return Appointment::all();
+        return DB::table('appointments')
+            ->select('appointments.title as appointment_title', 'homes.title as home_title', 'customers.fullname as customer_name')
+            ->leftJoin('homes', 'homes.id','=', 'appointments.home_id')
+            ->leftJoin('customers', 'customers.id', '=', 'appointments.customer_id')
+            ->where('appointments.status', '=', 1)
+            ->where('homes.status', '=', 1)
+            ->where('customers.status', '=', 1)
+            ->get()->toJson();
     }
 
     /**
