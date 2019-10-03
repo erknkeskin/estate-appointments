@@ -8,6 +8,15 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 import './assets/css/custom.css'
 import axios from 'axios'
 
+import * as VueGoogleMaps from 'vue2-google-maps'
+
+Vue.use(VueGoogleMaps, {
+    load: {
+        key: 'AIzaSyDX3RgJJApx8aKh5zeN0UXwFMS5yAmTYlk',
+        libraries: 'places,drawing,visualization'
+    }
+})
+
 const token = localStorage.getItem('token')
 if (token) {
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + token

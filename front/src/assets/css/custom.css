@@ -8,8 +8,30 @@ body {
 .container-content {
     position: relative;
     margin-left: 270px;
-    margin-top: 20px;
+    margin-top: 50px;
     width: calc(100% - 290px);
     background-color: #ffffff;
     padding: 20px;
 }
+
+ul.process {
+    margin:0px;
+    padding: 0px;
+    float: right;
+}
+
+ul.process li {
+    list-style: none;
+    float: left;
+    margin: 0px 5px;
+}
+
+ul.process li a {
+    text-decoration: none;
+    color:#282828;
+}
+
+ul.process li a span {
+
+}
+

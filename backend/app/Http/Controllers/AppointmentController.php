@@ -22,14 +22,16 @@ class AppointmentController extends Controller
      */
     public function index()
     {
+
         return DB::table('appointments')
-            ->select('appointments.title as appointment_title', 'homes.title as home_title', 'customers.fullname as customer_name')
+            ->select('appointments.title as appointment_title', 'appointments.start', 'homes.title as home_title', 'customers.fullname as customer_name')
             ->leftJoin('homes', 'homes.id','=', 'appointments.home_id')
             ->leftJoin('customers', 'customers.id', '=', 'appointments.customer_id')
             ->where('appointments.status', '=', 1)
             ->where('homes.status', '=', 1)
             ->where('customers.status', '=', 1)
-            ->get()->toJson();
+            ->where('appointments.user_id', '=', auth()->user()->id)
+            ->get();
     }
 
     /**

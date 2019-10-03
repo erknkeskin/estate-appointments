@@ -1,11 +1,6 @@
 <template>
     <div>
-        <div class="logo-wrapper">
-            <router-link to="/" tag="a" class="logo ml-2 mr-2"><img :src="this.$store.state.appData.logo"/>
-                {{this.$store.state.appData.name}}
-            </router-link>
-        </div>
-        <nav :style="{height:window.height+'px'}" :class="[ isMobile ? 'leftContentMobileView' : 'leftContent' ]">
+        <nav :class="[ isMobile ? 'leftContentMobileView' : 'leftContent' ]">
             <ul>
                 <router-link active-class="active" to="/" exact tag="li"><a href="#"><span
                         class="fas fa-tachometer-alt"></span> Kontrol Paneli</a>
@@ -56,10 +51,10 @@
         methods: {
             changeWidthForMobile() {
 
-                this.window.width = document.documentElement.clientWidth;
-                this.window.height = document.documentElement.clientHeight;
+                this.window.width = window.innerWidth;
+                this.window.height = window.innerHeight;
 
-                if (document.documentElement.clientWidth < 768)
+                if (window.innerWidth < 768)
                     this.isMobile = true
                 else
                     this.isMobile = false
@@ -74,9 +69,10 @@
     .leftContent {
         width: 250px;
         float: left;
-        position: absolute;
+        position: fixed;
+        top:50px;
         background-color: #e1e1e1;
-        padding-top: 20px;
+        height: 100%;
     }
 
     .leftContentMobileView {
@@ -84,7 +80,7 @@
     }
 
     nav ul {
-        margin: 0px;
+        margin: 20px 0px;
         padding: 0px;
     }
 
@@ -92,51 +88,25 @@
         list-style: none;
         height: 50px;
         line-height: 50px;
-        padding-left: 10px;
+        padding-left: 20px;
+        display: block;
+        cursor: pointer;
     }
 
     nav ul li:hover {
         background-color: #ffffff;
-        cursor: pointer;
-    }
-
-    nav ul li:hover a {
-        color: #282828;
-        display: block;
-        height: 100%;
-        width: 100%;
     }
 
     nav ul li a {
-        text-decoration: none;
-        color: #282828;
         font-size: 14px;
+        color: #282828;
+        display: block;
+        width: 100%;
+        height:100%;
+        text-decoration: none;
     }
 
     nav ul li.active {
         background-color: #ffffff;
-    }
-
-    nav ul li.active a {
-        color: #282828 !important;
-    }
-
-    .logo-wrapper {
-        height: 50px;
-        line-height: 50px;
-        z-index: 2;
-        position: relative;
-    }
-
-    .logo {
-        position: relative;
-        font-size: 28px;
-        color: white;
-        font-family: 'Squada One', cursive;
-        text-decoration: none;
-    }
-
-    .logo img {
-        height: 25px;
     }
 </style>
