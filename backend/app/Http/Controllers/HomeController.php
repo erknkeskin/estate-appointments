@@ -6,6 +6,7 @@ use App\Http\Requests\HomeRequest;
 use App\Http\Resources\Home\HomeResource;
 use App\Model\Home;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends Controller
@@ -23,7 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return Home::all();
+        //return Home::all();
+
+        return DB::table('homes')
+            ->where('status', '=', 1)
+            ->orderBy('id', 'desc')
+            ->get();
     }
 
     /**

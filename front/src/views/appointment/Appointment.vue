@@ -381,15 +381,13 @@ export default {
 						this.saveFormWarning.message = "Kaydedildi";
 						this.saveFormWarning.style = "badge badge-success d-block";
 						this.saveFormWarning.icon = '<i class="fas fa-check-circle"></i>';
+						this.saveFormWarning.message = "";
+						this.saveFormWarning.style = "d-none";
+						this.saveFormWarning.icon = "";
+						$("#formModal").modal("hide");
 						setTimeout(() => {
-							this.saveFormWarning.message = "";
-							this.saveFormWarning.style = "d-none";
-							this.saveFormWarning.icon = "";
-							$("#formModal").modal("hide");
+							window.location.reload();
 						}, 1000);
-
-						this.saveAppointmentData = [];
-						this.getAllAppointments();
 					});
 			} else {
 				let updateId = this.saveAppointmentData.id;
@@ -405,15 +403,14 @@ export default {
 						this.saveFormWarning.message = "Kaydedildi";
 						this.saveFormWarning.style = "badge badge-success d-block";
 						this.saveFormWarning.icon = '<i class="fas fa-check-circle"></i>';
-						setTimeout(() => {
-							this.saveFormWarning.message = "";
-							this.saveFormWarning.style = "d-none";
-							this.saveFormWarning.icon = "";
-							$("#formModal").modal("hide");
-						}, 1000);
+						this.saveFormWarning.message = "";
+						this.saveFormWarning.style = "d-none";
+						this.saveFormWarning.icon = "";
+						$("#formModal").modal("hide");
 
-						this.saveAppointmentData = [];
-						this.getAllAppointments();
+						setTimeout(() => {
+							window.location.reload();
+						}, 1000);
 					});
 			}
 		},
