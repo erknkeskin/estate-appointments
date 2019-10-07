@@ -96,8 +96,6 @@
 							<div class="form-row mb-3">
 								<input
 									type="text"
-									name="title"
-									id="title"
 									autocomplete="off"
 									class="form-control"
 									placeholder="Randevu Başlığı"
@@ -106,8 +104,6 @@
 							</div>
 							<div class="form-row mb-3">
 								<textarea
-									name="note"
-									id="note"
 									placeholder="Notlar"
 									v-model="saveAppointmentData.note"
 									class="form-control"
@@ -333,31 +329,31 @@ export default {
 				});
 		},
 		saveAppointment() {
-			if (this.saveAppointmentData.customer_id === null) {
+			if (this.saveAppointmentData.customer_id === null || this.saveAppointmentData.customer_id == '') {
 				this.saveFormWarning.message = "Müşteri seçmelisiniz";
 				this.saveFormWarning.style = "badge badge-danger d-block";
 				return false;
 			}
 
-			if (this.saveAppointmentData.home_id === null) {
+			if (this.saveAppointmentData.home_id === '') {
 				this.saveFormWarning.message = "Ev seçmelisiniz";
 				this.saveFormWarning.style = "badge badge-danger d-block";
 				return false;
 			}
 
-			if (this.saveAppointmentData.title === null) {
+			if (this.saveAppointmentData.title === '') {
 				this.saveFormWarning.message = "Randevu başlığı yazmalısınız";
 				this.saveFormWarning.style = "badge badge-danger d-block";
 				return false;
 			}
 
-			if (this.saveAppointmentData.note === null) {
+			if (this.saveAppointmentData.note === '') {
 				this.saveFormWarning.message = "Randevu notu yazmalısınız";
 				this.saveFormWarning.style = "badge badge-danger d-block";
 				return false;
 			}
 
-			if (this.saveAppointmentData.start === null) {
+			if (this.saveAppointmentData.start === '') {
 				this.saveFormWarning.message = "Randevu zamanı seçmelisiniz";
 				this.saveFormWarning.style = "badge badge-danger d-block";
 				return false;
@@ -367,7 +363,8 @@ export default {
 			this.saveFormWarning.style = "badge badge-warning d-block";
 			this.saveFormWarning.icon = '<i class="fas fa-check-circle"></i>';
 
-			if (this.saveAppointment.id === 0) {
+			if (this.saveAppointmentData.id === 0) {
+
 				delete this.saveAppointmentData.id; // new
 
 				axios
@@ -512,11 +509,11 @@ export default {
 				// for save
 				id: 0,
 				customer_id: null,
-				user_id: null,
-				home_id: null,
-				title: null,
-				note: null,
-				start: null
+				user_id: '',
+				home_id: '',
+				title: '',
+				note: '',
+				start: ''
 			},
 			saveFormWarning: {
 				style: "badge badge-danger d-none",

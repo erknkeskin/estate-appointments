@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\Office\OfficeResource;
 use App\Model\Office;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
 class OfficeController extends Controller
@@ -22,7 +23,10 @@ class OfficeController extends Controller
      */
     public function index()
     {
-        return Office::all();
+        return DB::table('offices')
+            ->where('status', '=', 1)
+            ->orderBy('id', 'desc')
+            ->get();
     }
 
     /**

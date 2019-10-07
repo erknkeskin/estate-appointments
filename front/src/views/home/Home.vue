@@ -55,7 +55,7 @@
 							<div class="form-row mb-3">
 								<GmapMap
 									:center="{ lat: 40.99, lng: 28.65 }"
-									:zoom="15"
+									:zoom="13"
 									style="width:100%; height: 300px"
 								>
 									<GmapMarker
@@ -69,8 +69,6 @@
 							<div class="form-row mb-3">
 								<input
 									type="text"
-									name="title"
-									id="title"
 									autocomplete="off"
 									class="form-control"
 									placeholder="Ev"
@@ -79,8 +77,6 @@
 							</div>
 							<div class="form-row mb-3">
 								<textarea
-									name="note"
-									id="note"
 									placeholder="Notlar"
 									v-model="saveHomeData.note"
 									class="form-control"
@@ -216,21 +212,21 @@ export default {
 				});
 		},
 		saveHome() {
-			if (this.saveHomeData.title === null) {
+			if (this.saveHomeData.title === '') {
 				this.saveFormWarning.message = "Ev başlığı yazmalısınız";
 				this.saveFormWarning.style = "badge badge-danger d-block";
 				return false;
 			}
 
-			if (this.saveHomeData.note === null) {
+			if (this.saveHomeData.note === '') {
 				this.saveFormWarning.message = "Ev notu yazmalısınız";
 				this.saveFormWarning.style = "badge badge-danger d-block";
 				return false;
 			}
 
 			if (
-				this.saveHomeData.latitude === null &&
-				this.saveHomeData.longitude === null
+				this.saveHomeData.latitude === '' &&
+				this.saveHomeData.longitude === ''
 			) {
 				this.saveFormWarning.message = "Haritadan koordinat seçmelisiniz";
 				this.saveFormWarning.style = "badge badge-danger d-block";
@@ -337,12 +333,11 @@ export default {
 		return {
 			modalTitle: "Yeni Ev Ekle",
 			homesData: [], // all homes
-			coordinates: null,
 			deleteHomeId: 0,
 			saveHomeData: {
 				id: 0,
-				title: null,
-				note: null,
+				title: '',
+				note: '',
 				latitude: 40.99,
 				longitude: 28.65
 			},

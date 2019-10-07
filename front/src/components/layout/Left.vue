@@ -2,9 +2,6 @@
     <div>
         <nav :class="[ isMobile ? 'leftContentMobileView' : 'leftContent' ]">
             <ul>
-                <router-link active-class="active" to="/" exact tag="li"><a href="#"><span
-                        class="fas fa-tachometer-alt"></span> Kontrol Paneli</a>
-                </router-link>
                 <router-link active-class="active" to="/appointments" tag="li"><a href="#"><span
                         class="fas fa-calendar"></span>
                     Randevular</a></router-link>

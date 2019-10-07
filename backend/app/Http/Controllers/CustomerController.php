@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\Customer\CustomerResource;
 use App\Model\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
 class CustomerController extends Controller
@@ -22,7 +23,10 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return Customer::all();
+        return DB::table('customers')
+            ->where('status', '=', 1)
+            ->orderBy('id', 'desc')
+            ->get();
     }
 
     /**

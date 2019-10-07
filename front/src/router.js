@@ -17,7 +17,7 @@ const router = new Router({
     routes: [
         {
             path: '/',
-            component: Dashboard,
+            component: Appointment,
             meta: {
                 requiresAuth: true
             }
@@ -39,13 +39,6 @@ const router = new Router({
         {
             path: '/offices',
             component: Office,
-            meta: {
-                requiresAuth: true
-            }
-        },
-        {
-            path: '/dashboard',
-            redirect: '/',
             meta: {
                 requiresAuth: true
             }

@@ -29,6 +29,7 @@ ul.process li {
 ul.process li a {
     text-decoration: none;
     color:#282828;
+    cursor: pointer;
 }
 
 ul.process li a span {
