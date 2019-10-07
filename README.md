@@ -1,4 +1,4 @@
-<p>=== Estate Appointments Dashboard with Laravel and VueJs ===<br>
+<p>=== Estate Appointments Dashboard with Laravel Backend Restful and VueJs ===<br>
   
 Contributors: Erkan Keskin<br>
 Author link: <a href="https://erkankeskin.com.tr">https://erkankeskin.com.tr</a><br>
