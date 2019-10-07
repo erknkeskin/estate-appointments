@@ -16,6 +16,9 @@
             <label for="password">Password</label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="button" @click="login">Giriş Yap</button>
+        <div class="form-label-group">
+            <span :class="loginStatusClass">{{ this.$store.state.loginMessage }}</span>
+        </div>
         <p class="mt-5 mb-3 text-muted text-center">&copy; 2019</p>
     </form>
 </template>
@@ -27,6 +30,11 @@
             return {
                 email: '',
                 password: ''
+            }
+        },
+        computed: {
+            loginStatusClass(){ //mmann@example.net
+                return this.$store.state.status == '' ? '' : this.$store.state.warningStyle
             }
         },
         methods: {

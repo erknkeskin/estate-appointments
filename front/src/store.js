@@ -12,24 +12,34 @@ export default new Vuex.Store({
             logo: logo
         },
         status: '',
+        warningStyle: '',
+        loginMessage: '',
         token: localStorage.getItem('token') || '',
         user: {}
     },
     mutations: {
         auth_request(state) {
-            state.status = 'loading'
+            state.status = 'loading';
+            state.warningStyle = 'badge badge-warning';
+            state.loginMessage = 'giriş yapılıyor...';
         },
         auth_success(state, token, user) {
-            state.status = 'success'
-            state.token = token
-            state.user = user
+            state.status = 'success';
+            state.token = token;
+            state.user = user;
+            state.warningStyle = 'badge badge-success';
+            state.loginMessage = 'giriş başarılı';
         },
         auth_error(state) {
-            state.status = 'error'
+            state.status = 'error';
+            state.warningStyle = 'badge badge-danger';
+            state.loginMessage = 'giriş başarısız';
         },
         logout(state) {
-            state.status = ''
-            state.token = ''
+            state.status = '';
+            state.token = '';
+            state.warningStyle = '';
+            state.loginMessage = '';
         }
     },
     actions: {

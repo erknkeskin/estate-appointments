@@ -24,13 +24,14 @@ class AppointmentController extends Controller
     {
 
         return DB::table('appointments')
-            ->select('appointments.title as appointment_title', 'appointments.start', 'homes.title as home_title', 'customers.fullname as customer_name')
+            ->select('appointments.title as appointment_title', 'appointments.id', 'appointments.start', 'homes.title as home_title', 'customers.fullname as customer_name')
             ->leftJoin('homes', 'homes.id','=', 'appointments.home_id')
             ->leftJoin('customers', 'customers.id', '=', 'appointments.customer_id')
             ->where('appointments.status', '=', 1)
             ->where('homes.status', '=', 1)
             ->where('customers.status', '=', 1)
             ->where('appointments.user_id', '=', auth()->user()->id)
+            ->orderBy('appointments.id', 'desc')
             ->get();
     }
 
@@ -52,6 +53,7 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
+
         $appointment = new Appointment;
         $appointment->customer_id = $request->customer_id;
         $appointment->user_id = $request->user_id;
@@ -97,6 +99,9 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, Appointment $appointment)
     {
+
+        $request['start'] = strtotime($request['start']);
+
         $appointment->update($request->all());
 
         return response()->json([
